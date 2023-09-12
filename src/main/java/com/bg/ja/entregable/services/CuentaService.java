@@ -38,9 +38,9 @@ public class CuentaService implements ICuentaService {
         Optional<Cuenta> cuentaExistente = repository.findByNumeroCuenta(cuenta.getNumeroCuenta());
 
         if(cuentaExistente.isPresent()){
-            Cuenta actualizaCuenta = cuentaExistente.get();
-            actualizaCuenta.setSaldo(cuenta.getSaldo());
-            return repository.save(cuenta);
+           // Cuenta actualizaCuenta = cuentaExistente.get();
+            cuentaExistente.get().setSaldo(cuenta.getSaldo());
+            return repository.save(cuentaExistente.get());
         }else {
          throw new Exception("No existe el numero de cuenta: "+ cuenta.getNumeroCuenta());
         }

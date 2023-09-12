@@ -23,11 +23,11 @@ public class Transferencia {
 
     private BigDecimal monto;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "cuenta_origen_id")
     private Cuenta cuentaOrigen;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "cuenta_destino_id")
     private Cuenta cuentaDestino;
 

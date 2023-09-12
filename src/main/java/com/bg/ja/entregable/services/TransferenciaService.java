@@ -38,13 +38,11 @@ public class TransferenciaService implements ITransferenciaService{
         }
 
         if(cDestino.isPresent()){
-            Cuenta actualizaO = cOrigen.get();
-            Cuenta actualizaD = cDestino.get();
-            actualizaO.setSaldo(actualizaO.getSaldo().subtract(transferencia.getMonto()));
-            actualizaD.setSaldo(actualizaD.getSaldo().add(transferencia.getMonto()));
+            cOrigen.get().setSaldo(cOrigen.get().getSaldo().subtract(transferencia.getMonto()));
+            cDestino.get().setSaldo(cDestino.get().getSaldo().add(transferencia.getMonto()));
 
-            serviceC.update(actualizaO);
-            serviceC.update(actualizaD);
+            serviceC.update(cOrigen.get());
+            serviceC.update(cDestino.get());
 
 
 
